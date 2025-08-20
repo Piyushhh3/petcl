@@ -2,7 +2,7 @@ FROM eclipse-temurin:20-jdk-alpine as build
 COPY . /usr/app
 WORKDIR /usr/app
 RUN chmod +x mvnw && ./mvnw clean package
-
+#second stage
 FROM eclipse-temurin:20-jre-alpine
 RUN mkdir /app
 COPY --from=build /usr/app/target/*.jar /app/com.springboot.petclinic.jar
